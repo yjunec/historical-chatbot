@@ -1,4 +1,5 @@
 .env
+PUBLIC_URL.txt
 __pycache__/
 *.pyc
 .gradio/
