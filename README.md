@@ -15,9 +15,14 @@ short_description: 역사적 인물과 대화하는 AI 챗봇
 
 OpenAI API를 활용해 알베르트 아인슈타인, 세종대왕, 마리 퀴리 등 역사적 인물과 대화할 수 있는 챗봇입니다.
 
-## 🌐 라이브 데모
+## 🌐 GitHub 저장소
 
-배포 후 이 Space URL에서 누구나 브라우저·모바일로 접속해 사용할 수 있습니다.
+**https://github.com/yjunec/historical-chatbot**
+
+## 🌐 라이브 데모 (공개 배포)
+
+Hugging Face Spaces에 배포하면 누구나 브라우저·핸드폰에서 접속할 수 있습니다.
+자세한 배포 방법은 [DEPLOY.md](DEPLOY.md)를 참고하세요.
 
 ## ✨ 기능
 
