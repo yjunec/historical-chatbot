@@ -82,6 +82,12 @@ CUSTOM_CSS = """
 footer {
     display: none !important;
 }
+button, .gr-button, .gr-button * {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em;
+    -webkit-font-smoothing: antialiased;
+}
 @media (max-width: 768px) {
     .gradio-container {
         padding: 0.5rem !important;
@@ -190,8 +196,8 @@ def create_app() -> gr.Blocks:
                 figure_info = gr.HTML(get_figure_info(FIGURE_NAMES[0]))
 
                 with gr.Row():
-                    start_btn = gr.Button("💬 대화 시작", variant="primary", scale=2)
-                    reset_btn = gr.Button("🔄 초기화", variant="secondary", scale=1)
+                    start_btn = gr.Button("대화 시작", variant="primary", scale=2)
+                    reset_btn = gr.Button("초기화", variant="secondary", scale=1)
 
                 gr.Markdown(
                     "**사용 방법**\n"
