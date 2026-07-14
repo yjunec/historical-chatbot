@@ -26,8 +26,14 @@ FIGURE_BY_NAME = {figure["name"]: figure for figure in HISTORICAL_FIGURES.values
 FIGURE_NAMES = list(FIGURE_BY_NAME.keys())
 
 CUSTOM_CSS = """
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap');
+
+.gradio-container,
+.gradio-container * {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif !important;
+    word-break: keep-all;
+}
 .gradio-container {
-    font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif !important;
     max-width: 1100px !important;
     margin: 0 auto !important;
 }
@@ -38,14 +44,17 @@ CUSTOM_CSS = """
 .main-header h1 {
     font-size: clamp(1.4rem, 4vw, 2rem);
     font-weight: 700;
-    background: linear-gradient(135deg, #8B6914 0%, #C9A227 50%, #8B6914 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #8B6914 !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #8B6914 !important;
     margin-bottom: 0.25rem;
+    line-height: 1.4;
 }
 .main-header p {
     color: #6B5B4E;
     font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+    line-height: 1.5;
 }
 .figure-card {
     background: linear-gradient(145deg, #FDF8F0 0%, #F5EDE0 100%);
@@ -129,7 +138,7 @@ def start_conversation(figure_name: str):
 
 def chat_response(message: str, history: list, bot: HistoricalFigureChatbot | None):
     if bot is None:
-        gr.Warning("먼저 역사적 인물을 선택하고 '대화 시작' 버튼을 눌러주세요.")
+        gr.Warning("먼저 역사적 위인을 선택하고 '대화 시작' 버튼을 눌러주세요.")
         return "", history, bot
 
     if not message.strip():
@@ -154,14 +163,15 @@ def reset_conversation(figure_name: str):
 
 
 def create_app() -> gr.Blocks:
-    with gr.Blocks(title="역사적 인물과의 대화") as demo:
+    with gr.Blocks(title="역사적 위인과의 대화") as demo:
         bot_state = gr.State(None)
 
         gr.HTML(
             """
+            <meta charset="utf-8">
             <div class="main-header">
-                <h1>📜 역사적 인물과의 대화</h1>
-                <p>위대한 역사적 인물들과 직접 대화해보세요</p>
+                <h1>📜 역사적 위인과의 대화</h1>
+                <p>위대한 역사적 위인들과 직접 대화해보세요</p>
             </div>
             """
         )
@@ -173,7 +183,7 @@ def create_app() -> gr.Blocks:
                 figure_dropdown = gr.Dropdown(
                     choices=FIGURE_NAMES,
                     value=FIGURE_NAMES[0],
-                    label="대화할 역사적 인물",
+                    label="대화할 역사적 위인",
                     interactive=True,
                 )
 
